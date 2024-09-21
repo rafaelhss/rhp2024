@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene">
+      <a-sphere position="0 1.25 -5" radius="1" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+	 <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+  <script>
+  function getScene(){
+	return document.getElementById("scene");
+  }
+  
+  function createGround(size){
+	const ground = document.createElement('a-plane');
+	ground.setAttribute("position", "0 0 -4"); 
+	ground.setAttribute("rotation", "-90 0 0"); 
+	ground.setAttribute("width", size); 
+	ground.setAttribute("height", size); 
+	ground.setAttribute("color", "#AA0000"); 
+	getScene().appendChild(ground);
+  }
+  createGround(500);
+  
+  function createGroundZero(){
+	const groundZero = document.createElement('a-cone');
+	groundZero.setAttribute("radius-bottom", "5");
+	groundZero.setAttribute("radius-top", "1");
+	groundZero.setAttribute("height", "150");
+	groundZero.setAttribute("position", "0 75 0");	
+	groundZero.setAttribute("color", "#4400AA");	
+	getScene().appendChild(groundZero);
+  }
+  //createGroundZero();
+  
+  
+  
+  function createGenericSquareRoom(size, wallHeightFactor, x, z){
+	if(!wallHeightFactor){
+		wallHeightFactor  = 1;
+	}
+	const WALL_DEFAULT_HEIGHT = 3;
+	const WALL_DEFAULT_DEPTH = 0.15;
+	const wallHeight = WALL_DEFAULT_HEIGHT * wallHeightFactor;
+	
+	function createRoomLevel(size, Y, x, z){
+		if(!x){x=0;}
+		if(!z){z=0;}
+		
+		var ground = document.createElement('a-box');
+		ground.setAttribute("position", x + " " + Y + " " + z); 
+		ground.setAttribute("width", size); 
+		ground.setAttribute("height", 0.01); 
+		ground.setAttribute("depth", size);
+		ground.setAttribute("color", "#0000AA"); 
+		return ground;
+	}
+	
+	const ground = createRoomLevel(size, 0.1, x, z);
+	getScene().appendChild(ground);
+	
+	ground.appendChild(createRoomLevel(size, wallHeight)); //ceiling
+	
+	
+	function createWall(size){
+		var wall = document.createElement('a-box');
+		wall.setAttribute("color","#009900");
+		wall.setAttribute("width", size); 
+		wall.setAttribute("height", wallHeight);
+		wall.setAttribute("depth", WALL_DEFAULT_DEPTH);
+		
+		const posY = parseFloat(wallHeight/2);
+		wall.setAttribute("position", "0 " + posY + " 0");
+		wall.setAttribute("posY", posY);
+		
+		return wall;		
+	}
+	function wallToLeft(wall){
+		wall.setAttribute("rotation","0 90 0");	
+		const posX = parseFloat(size/2);
+		wall.setAttribute("position",posX + " " + wall.getAttribute("posY") + " 0");	
+		return wall
+	}
+	function wallToRight(wall){
+		wall.setAttribute("rotation","0 90 0");	
+		const posX = 0 - parseFloat(size/2);
+		wall.setAttribute("position",posX + " " + wall.getAttribute("posY") + " 0");
+
+		wall.setAttribute("color","#0099AA");		
+		return wall
+	}
+	function wallToBack(wall){
+		const posZ = 0 - parseFloat(size/2);
+		wall.setAttribute("position","0 " + wall.getAttribute("posY") + " " + posZ);	
+		return wall
+	}
+	function wallToFront(wall){
+		const posZ = parseFloat(size/2);
+		wall.setAttribute("position","0 " + wall.getAttribute("posY") + " " + posZ);
+		return wall
+	}
+	
+	ground.walls = [];
+	
+	ground.walls["r"] = wallToRight(createWall(size))
+	ground.appendChild(ground.walls["r"]);
+	
+	ground.appendChild(wallToLeft(createWall(size)));
+	ground.appendChild(wallToBack(createWall(size)));
+	ground.appendChild(wallToFront(createWall(size)));
+	return ground;
+  }
+  
+  var room = createGenericSquareRoom(15, 1, 10, -10);
+ 
+  function addWindow(wall, winX, winY, winW, winH){
+	wall.setAttribute("material", "opacity: 0");
+	
+	var bottomWall = wall.cloneNode(true);
+	bottomWall.setAttribute("height", winY);
+	bottomWall.setAttribute("width", wall.getAttribute("width"));
+	posY = (0 - parseFloat(((wall.getAttribute("height") / 2)) - (bottomWall.getAttribute("height")/2)));
+	bottomWall.setAttribute("position", "0 " + posY + " 0");
+	bottomWall.setAttribute("color","#FF0000");
+	
+	var upperWall = wall.cloneNode(true);
+	upperWall.setAttribute("height", (wall.getAttribute("height") - winH - winY));
+	upperWall.setAttribute("width", wall.getAttribute("width"));
+	
+	posY = (parseFloat((wall.getAttribute("height")/2) - ((upperWall.getAttribute("height") / 2))));
+	upperWall.setAttribute("position", "0 " + posY + " 0");
+	upperWall.setAttribute("color","#FF00FF");
+	
+	
+	wall.appendChild(bottomWall);
+	wall.appendChild(upperWall);
+	
+	
+	
+	return wall;
+  
+	
+  }; 
+  room = addWindow(room.walls["r"], 5, 2, 1, 1.5); 
+  
+  
+  
+  
+  </script>
+</html>
