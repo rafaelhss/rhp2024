@@ -1,6 +1,6 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+		<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene id="scene">
@@ -65,10 +65,10 @@
 			<a-box id="dhammaWallPilar" position="2.5 1.5 0" height="9" width = "0.4" depth="0.24" color="#552b10"></a-box>
 			<a-box id="dhammaWallPilar" position="-2.5 1.5 0" height="9" width = "0.4" depth="0.24" color="#552b10"></a-box>
 			
-			<a-box id="dhammaPortaServ" position="-6 -2 0" height="2" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
-			<a-box id="dhammaPortaServ" position="-4.5 -2 0" height="2" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
-			<a-box id="dhammaPortaServ" position="6 -2 0" height="2" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
-			<a-box id="dhammaPortaServ" position="4.5 -2 0" height="2" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
+			<a-box id="dhammaPortaServ" position="-6 -2 0" height="2.1" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
+			<a-box id="dhammaPortaServ" position="-4.5 -2 0" height="2.1" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
+			<a-box id="dhammaPortaServ" position="6 -2 0" height="2.1" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
+			<a-box id="dhammaPortaServ" position="4.5 -2 0" height="2.1" width = "0.8" depth="0.16" color="#6e3714"> </a-box>	
 			
 			<a-triangle id="dhammaTriTrasCima" position="0 6 0" color="#d3792a" vertex-a="0 1.63 0" vertex-b="-2.75 0 0" vertex-c="2.75 0 0"  side="double"></a-triangle>
 			<a-triangle id="dhammaTriTrasDir" position="-4 4.4 0" rotation="0 0 225" color="#d3792a" vertex-a="0 2 0" vertex-b="3.79 -1.72 0" vertex-c="-2.34 0 0" side="double"></a-triangle>
@@ -77,7 +77,15 @@
 		</a-box>
 		
 		
-	    <a-box id="dhammaWallDir" position="7.5 3 0" rotation="0 90 0" height="6" width = "15" depth="0.1" color="#d3792a"></a-box>
+	    <a-box id="dhammaWallDir" position="7.5 3 0" rotation="0 90 0" height="6" width = "15" depth="0.1" color="#d3792a">
+			<a-box id="dhammaWallPilar" position="-7.5 0 0" height="6" width = "0.4" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaWallJanela" position="-5.375 -1 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaWallPilar" position="-3.25 0 0" height="6" width = "0.4" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaWallJanela" position="0 -1 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaWallPilar" position="3.25 0 0" height="6" width = "0.4" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaWallJanela" position="5.375 -1 0" height="1.5" width = "2" depth="0.16" color="#552b10" ></a-box>
+			<a-box id="dhammaWallPilar" position="7.5 0 0" height="6" width = "0.4" depth="0.16" color="#552b10"></a-box>
+		</a-box>
 		<a-box id="dhammaWallEsq" position="-7.5 3 0" rotation="0 90 0" height="6" width = "15" depth="0.1" color="#d3792a">
 			<a-box id="dhammaWallPilar" position="-7.5 0 0" height="6" width = "0.4" depth="0.16" color="#552b10"></a-box>
 			<a-box id="dhammaWallJanela" position="-5.375 -1 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
@@ -87,6 +95,22 @@
 			<a-box id="dhammaWallJanela" position="5.375 -1 0" height="1.5" width = "2" depth="0.16" color="#552b10" ></a-box>
 			<a-box id="dhammaWallPilar" position="7.5 0 0" height="6" width = "0.4" depth="0.16" color="#552b10"></a-box>
 		</a-box>
+		
+		<!-- ante sala -->
+		<a-box id="dhammaAnteWallDir" position="7.5 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a">
+			<a-box id="dhammaAnteWallPilar" position="-1.5 0 0" height="3" width = "0.4" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaAnteWallJanela" position="0 0.4 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
+		</a-box>
+		<a-box id="dhammaAnteWallEsq" position="-7.5 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a">
+			<a-box id="dhammaAnteWallPilar" position="-1.5 0 0" height="3" width = "0.4" depth="0.16" color="#552b10"></a-box>
+			<a-box id="dhammaAnteWallJanela" position="0 0.4 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
+		</a-box>
+		<a-box id="dhammaAnteWallMeio" position="0 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a"></a-box>
+		<a-box id="dhammaAnteWallMeioEsq1" position="-2.48 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a"></a-box>
+		<a-box id="dhammaAnteWallMeioEsq2" position="-2.48 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a"></a-box>
+		
+		
+		<!-- fim ante sala>
 		<!-- <a-box id="dhammaTeto" position="0 6 0"  color="#af723c" width = "15" height="0.01" depth="15"></a-box> !-->
 		
 		<script>
@@ -129,7 +153,7 @@
 	-->	
 		
 		
-	  </a-box>
+	  </a-box> <!-- fim dhamma-->
 	  
 	  
 	 <a-sky color="#ECECEC"></a-sky>
