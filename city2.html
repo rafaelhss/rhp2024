@@ -7,7 +7,8 @@
 	  <a-assets>
 		<img id="wallWindow" src="win.png" crossorigin="anonymous" />
 	  </a-assets>
-    <!--  <a-sphere position="2000 1.25 -5" radius="1" color="#EF2D5E"></a-sphere>
+	 <a-camera position="-6.5 1.5 12"></a-camera>
+  <!--  <a-sphere position="2000 1.25 -5" radius="1" color="#EF2D5E"></a-sphere>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
 	     Basic triangle. 
 	  <a-box height="3" depth="3" width="3" 
@@ -32,8 +33,8 @@
 	  width = "15" height="0.01" depth="15">
 		<!--<a-triangle position="0 6 7.5" color="#d3792a" vertex-a="0 4.5 0" vertex-b="7.5 0 0" vertex-c="-7.5 0 0" side="double"></a-triangle>
 		-->
-		<a-box position="-4.77 7.7 0" rotation="60 90 0" color="#7f6e10" height="11" width = "15" depth="0.1" ></a-box>
-		<a-box position="4.77 7.7 0" rotation="-60 90 0" color="#7f6e10" height="11" width = "15" depth="0.1" ></a-box>
+		<a-box id="dhammaTetoEsq" position="-4.77 7.7 0" rotation="60 90 0" color="#7f6e10" height="11" width = "15" depth="0.1" ></a-box>
+		<a-box id="dhammaTetoDir" position="4.77 7.7 0" rotation="-60 90 0" color="#7f6e10" height="11" width = "15" depth="0.1" ></a-box>
 		
 		<a-box id="dhammaWallTras" position="0 3 -7.5" height="6" width = "15" depth="0.1" color="#d3792a">
 			<a-triangle position="0 3 0" color="#d3792a" vertex-a="0 4.5 0" vertex-b="7.65 0 0" vertex-c="-7.65 0 0" side="double"></a-triangle>
@@ -97,6 +98,15 @@
 		</a-box>
 		
 		<!-- ante sala -->
+		<a-box id="dhammaAnteLage" position="0 3 9"  color="#7f6e10" height="0.1" width = "15" depth="3" >
+			<a-triangle id="dhammaAnteTelhado" color="#7f6e10"
+			vertex-a="7.5 0 1.5" vertex-b="-7.5 0 1.5" vertex-c="0 2 -1.5" side="double"rotation="0 0 0"></a-triangle>
+			<a-triangle id="dhammaAnteTelhado" color="#7f6e10"
+			vertex-a="7.5 0 -1.5" vertex-b="-7.5 0 1.5" vertex-c="0 2 -1.5" side="double"rotation="0 0 0"></a-triangle>
+			<a-triangle id="dhammaAnteTelhado" color="#7f6e10"
+			vertex-a="-7.5 0 -1.5" vertex-b="-7.5 0 1.5" vertex-c="0 2 -1.5" side="double"rotation="0 0 0"></a-triangle>
+		</a-box>
+		
 		<a-box id="dhammaAnteWallDir" position="7.5 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a">
 			<a-box id="dhammaAnteWallPilar" position="-1.5 0 0" height="3" width = "0.4" depth="0.16" color="#552b10"></a-box>
 			<a-box id="dhammaAnteWallJanela" position="0 0.4 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
@@ -105,9 +115,20 @@
 			<a-box id="dhammaAnteWallPilar" position="-1.5 0 0" height="3" width = "0.4" depth="0.16" color="#552b10"></a-box>
 			<a-box id="dhammaAnteWallJanela" position="0 0.4 0" height="1.5" width = "2" depth="0.16" color="#552b10"></a-box>
 		</a-box>
-		<a-box id="dhammaAnteWallMeio" position="0 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a"></a-box>
-		<a-box id="dhammaAnteWallMeioEsq1" position="-2.48 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a"></a-box>
-		<a-box id="dhammaAnteWallMeioEsq2" position="-2.48 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a"></a-box>
+		<a-box id="dhammaAnteWallMeio" position="0 1.5 9" rotation="0 90 0" height="3" width = "3" depth="0.1" color="#d3792a">
+			<a-box id="dhammaAntePrateleira1" position="0 0.9 -0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira2" position="0 0.2 -0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira3" position="0 -0.5 -0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira4" position="0 -1.2 -0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira5" position="0 0.9 0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira6" position="0 0.2 0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira7" position="0 -0.5 0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+			<a-box id="dhammaAntePrateleira8" position="0 -1.2 0.5"  height="0.03" width = "3" depth="1" color="#552b10"></a-box>
+		</a-box>
+		<a-box id="dhammaAnteWallMeioEsq1" position="-2.48 1.5 8.2" rotation="0 90 0" height="3" width = "1.1." depth="0.1" color="#d3792a"></a-box>
+		<a-box id="dhammaAnteWallMeioEsq2" position="-2.48 1.5 10" rotation="0 90 0" height="3" width = "1.2" depth="0.1" color="#d3792a"></a-box>
+		<a-box id="dhammaAnteWallMeioDir1" position="2.48 1.5 8.2" rotation="0 90 0" height="3" width = "1.1." depth="0.1" color="#d3792a"></a-box>
+		<a-box id="dhammaAnteWallMeioDir2" position="2.48 1.5 10" rotation="0 90 0" height="3" width = "1.2" depth="0.1" color="#d3792a"></a-box>
 		
 		
 		<!-- fim ante sala>
@@ -127,7 +148,7 @@
 				return almofada;
 			}
 			
-			var y = -2.5;
+				var y = -2.5;
 			for (var i = 0; i < 6; i++) {
 				
 				var x = 6.5
@@ -138,7 +159,37 @@
 				}
 				y = y + 1.3;
 			}
+
+
+			//almofadas antesala
+			function createAlmofadaAnte(x,y,z){
+				if(!x){x=0;}
+				if(!y){y=0;}
+				if(!z){z=0;}
+				
+				var almofada = document.createElement('a-box');
+				almofada.setAttribute("position", x + " " + y+ " " + z ); 
+				almofada.setAttribute("width", 0.5 + (Math.random()/10)); 
+				almofada.setAttribute("height", 0.06 + (Math.random()/100)); 
+				almofada.setAttribute("depth", 0.5 + (Math.random()/10));
+				almofada.setAttribute("color", '#'+(Math.random()*0xFFFFFF<<0).toString(16)); 
+				return almofada;
+			}
 			
+			for (var prat = 1; i <= 8; prat++) {
+			
+				var y = 0.05;
+				for (var i = 0; i < 4; i++) {
+					
+					var x = 0.6
+					for (var j = 0; j < 4; j++) {
+						xR = (Math.random() - 0.5) + x;
+					document.getElementById("dhammaAntePrateleira" + prat).appendChild(createAlmofadaAnte(xR, y, 0)); //homens
+					x = x - 0.5;
+					}
+					y = y + 0.07;
+				}
+			}
 		</script>
 <!--		
 		<a-box id="dhammaAlmofada" position="-6.5 0 0"  color="#00003c" width = "1" height="0.03" depth="1"></a-box>
