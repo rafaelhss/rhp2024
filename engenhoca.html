@@ -27,16 +27,15 @@
       
 	 
 	  <!-- costa mata -->
-	  <a-torus id="costaMata" material="color: #00DD00" geometry="radius: 200; radiusTubular: 30" rotation="90 0 0" position="0 -25 0"></a-torus>
+	  <a-torus id="costaMata" material="color: #00DD00" geometry="radius: 200; radiusTubular: 30; arc:150" rotation="90 0 0" position="0 -25 0"></a-torus>
 
       <!-- mar -->
-      <a-torus id="onda" width="20" scale="10 1 5" height="1" depth="1" position="0 30 25" rotation="-30 0 0" material="color: #72cdf7; opacity: 0.5" static-body
-	      animation="property: position-y; to:-10; dur: 15000; easing: easeOutSine; loop: true"
-		  animation__2="property: position; to:90; dur: 15000; easing: easeOutSine; loop: true; dir:alternate">
+      <a-torus id="onda" width="20" scale="10 1 5" height="1" depth="1" position="0 0 25" rotation="-30 0 0" material="color: #72cdf7; opacity: 0.5" static-body
+	      animation="property: position; to:0 0 -10; dur: 15000; easing: easeOutSine; loop: true">
 		  
 		<a-ocean width="2" depth="1" density="40" opacity="1" position="0 1.4 0"></a-ocean>	 
 	  </a-torus>
-	   <a-ocean width="350" depth="350" density="40" opacity="1" position="0 0.4 0"></a-ocean>
+	   <a-ocean width="350" depth="350" density="120" opacity="1" position="0 0.4 0"></a-ocean>
 
 	  
 	  
