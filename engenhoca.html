@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <script type="text/javascript" src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls@0.4.3/dist/aframe-blink-controls.min.js"></script>
+    <script src="https://c-frame.github.io/aframe-physics-system/dist/aframe-physics-system.js"></script>
+	<script src="https://c-frame.github.io/aframe-extras/dist/aframe-extras.js"></script>
+    <link rel="stylesheet" href="https://github.com/c-frame/aframe-physics-system/blob/master/examples/styles.css">
+	
+	<script src="https://c-frame.github.io/aframe-physics-system/examples/components/rain-of-entities.js"></script>
+    
+  </head>
+    <body>
+
+    <a-scene rain-of-entities="spread: 3; tagName: a-sphere">
+      <a-entity camera look-controls wasd-controls position="0 1.6 -2" listener="stepFactor:0.005" id="cam">
+      </a-entity>
+    
+
+	   <a-sphere id="playerball" position="0 2 -5" radius="1" visible="true" dynamic-body></a-sphere>
+	 
+      <!-- Terrain -->
+      <a-box class="grama" id="terrain" width="7000" height="0.1" depth="7000" position="0 -0.2 1000" static-body visible="true" color="green" material="opacity: 1; src: #gramaimg; repeat: 20 20;"></a-box>
+      
+	 
+	  <!-- costa mata -->
+	  <a-torus id="costaMata" material="color: #00DD00" geometry="radius: 200; radiusTubular: 30" rotation="90 0 0" position="0 -25 0"></a-torus>
+
+      <!-- mar -->
+      <a-torus id="onda" width="20" scale="10 1 5" height="1" depth="1" position="0 30 25" rotation="-30 0 0" material="color: #72cdf7; opacity: 0.5" static-body
+	      animation="property: position-y; to:-10; dur: 15000; easing: easeOutSine; loop: true"
+		  animation__2="property: position; to:90; dur: 15000; easing: easeOutSine; loop: true; dir:alternate">
+		  
+		<a-ocean width="2" depth="1" density="40" opacity="1" position="0 1.4 0"></a-ocean>	 
+	  </a-torus>
+	   <a-ocean width="350" depth="350" density="40" opacity="1" position="0 0.4 0"></a-ocean>
+
+	  
+	  
+	  <a-box position="-1 1.6 -5" animation="property: position; to: 1 8 -10; dur: 2000; easing: linear; loop: true" color="tomato" static-body></a-box>
+    </a-scene>
+  </body>
+    <script>
+  
+		var hip = 5; 
+		window.addEventListener('keydown', event => {
+		  if (event.key == "ArrowUp") {
+			console.log("Left key");
+			hip += 2;
+		  } else if (event.key == "ArrowDown") {
+			hip = 0;
+		  }
+		})
+	 var updateCamera = function(cam){
+        var vector = document.getElementById("playerball").body.velocity;
+        angle = THREE.MathUtils.radToDeg( Math.atan2(vector.x,vector.z) ); 
+
+        var hipotenusa = 1; //distance from ball
+        var velocityX = hipotenusa * Math.sin(DegreesToRadians(angle));
+        var velocityZ = hipotenusa * Math.cos(DegreesToRadians(angle));
+
+        var x = document.getElementById("playerball").getAttribute("position").x;  
+        var y = document.getElementById("playerball").getAttribute("position").y;
+        var z = document.getElementById("playerball").getAttribute("position").z;
+
+
+       /* var pos = x+ ", " + y + ", " + z;
+		console.log(pos)*/
+        
+        x -= velocityX * 2;
+        z -= velocityZ * 2;
+        y += 1.8; // always 10 up
+
+        cam.components.camera.camera.parent.position.set(x, y, z);         
+    }  
+    function DegreesToRadians(valDeg){
+        return ((2*Math.PI)/360*valDeg)
+    }
+		AFRAME.registerComponent("listener", {
+		schema : 
+		{
+			stepFactor : {
+				type : "number",
+				default : 0.05
+			}
+		},
+		tick : function()
+		{	
+            var angle = (document.getElementById("cam").getAttribute("rotation").y);
+            
+            
+            var velocityX = 10;
+            var velocityY = 10;
+
+            velocityX = hip * Math.sin(DegreesToRadians(angle))
+            velocityZ = hip * Math.cos(DegreesToRadians(angle))
+            
+            var origVelX = document.getElementById("playerball").body.velocity.x;
+            var origVelY = document.getElementById("playerball").body.velocity.y;
+            var origVelZ = document.getElementById("playerball").body.velocity.z;
+            
+            
+            //modo direto
+            document.getElementById("playerball").body.velocity.set(-velocityX, origVelY, -velocityZ);
+            
+            
+          // document.getElementById("playerball").setAttribute("position", document.getElementById("cam").getAttribute("position"))
+            //updade camera 
+            updateCamera(this.el); 
+           
+            
+           /* this.el.components.camera.camera.parent.position.add(this.el.components.camera.camera.getWorldDirection().multiplyScalar(this.data.stepFactor));
+           */
+		}
+	});
+	  </script>
+</html>
